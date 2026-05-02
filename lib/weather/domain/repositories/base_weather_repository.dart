@@ -1,5 +1,5 @@
 import 'package:weather_app/weather/domain/entities/weather_entity.dart';
 
-abstract class WeatherRepository {
+abstract class BaseWeatherRepository {
   Future<WeatherEntity> getWeatherByCityName(String cityName);
 }
