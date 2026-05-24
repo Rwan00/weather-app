@@ -3,12 +3,12 @@ import 'package:weather_app/weather/domain/entities/weather_entity.dart';
 import 'package:weather_app/weather/domain/repositories/base_weather_repository.dart';
 
 class WeatherRepository implements BaseWeatherRepository {
-  final RemoteDatasource remoteDatasource;
+  final BaseRemoteDataSource baseRemoteDataSource;
 
-  WeatherRepository({required this.remoteDatasource});
+  WeatherRepository({required this.baseRemoteDataSource});
 
   @override
   Future<WeatherEntity> getWeatherByCityName(String cityName) async {
-    return (await remoteDatasource.getWeatherByCirtName(cityName))!;
+    return (await baseRemoteDataSource.getWeatherByCirtName(cityName))!;
   }
 }

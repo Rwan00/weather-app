@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/weather/data/datasource/remote_datasource.dart';
+import 'package:weather_app/weather/data/repositories/weather_repository.dart';
+import 'package:weather_app/weather/domain/repositories/base_weather_repository.dart';
+import 'package:weather_app/weather/domain/usecases/get_weather_by_name_usecase.dart';
 
-void main() {
+void main() async {
+  BaseRemoteDataSource baseRemoteDataSource = RemoteDatasource();
+  BaseWeatherRepository baseWeatherRepository = WeatherRepository(
+    baseRemoteDataSource: baseRemoteDataSource,
+  );
+  await GetWeatherByNameUsecase(
+    weatherRepository: baseWeatherRepository,
+  ).execute("Ciro");
   runApp(const MyApp());
 }
 
@@ -11,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',                                                                          
+      title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
         //
