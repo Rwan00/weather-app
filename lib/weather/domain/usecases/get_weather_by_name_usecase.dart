@@ -6,7 +6,7 @@ class GetWeatherByNameUsecase {
 
   GetWeatherByNameUsecase({required this.weatherRepository});
 
-  Future<WeatherEntity> execute(cityName) async{
+  Future<WeatherEntity?> execute(cityName) async{
     return await weatherRepository.getWeatherByCityName(cityName);
   }
 }
